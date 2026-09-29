@@ -64,6 +64,7 @@ The repository includes `vercel.json` for two Vercel Services:
 
 - `app` builds the Vite frontend and serves the root path.
 - `backend` runs the Express API. Requests under `/api/*` are routed to it.
+-  Deployed Link: [Link](https://project-test-chi-opal.vercel.app/)
 
 In Vercel Project Settings, set the project framework to **Services** and keep the project root at the repository root. Vercel Services must be enabled for the account or project.
 
