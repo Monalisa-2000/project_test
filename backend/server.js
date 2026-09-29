@@ -7,7 +7,7 @@ const { randomUUID } = require('node:crypto');
 const app = express();
 const PORT = process.env.PORT || 4000;
 const DATA_FILE = path.join(__dirname, 'data', 'jobs.json');
-const DIST_DIR = path.join(__dirname, '..', 'frontend', 'dist');
+const DIST_DIR = path.join(__dirname, '..', 'dist');
 const STATUSES = ['New request', 'Needs quote', 'Awaiting approval', 'Ready to schedule', 'Scheduled', 'Completed'];
 const PRIORITIES = ['Normal', 'Urgent'];
 
