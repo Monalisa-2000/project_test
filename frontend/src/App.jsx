@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Activity, AlertCircle, ArrowRight, ArrowUpRight, CalendarDays, Check, CheckCheck, ChevronDown, CircleHelp, Clock3, Command, Filter, LayoutDashboard, ListTodo, LoaderCircle, Menu, MoreHorizontal, Plus, Search, Settings2, SlidersHorizontal, Snowflake, Sparkles, ThermometerSnowflake, Trash2, X } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:4000/api' : '/api');
+const API = import.meta.env.VITE_API_URL || '/api';
 const STATUSES = ['New request', 'Needs quote', 'Awaiting approval', 'Ready to schedule', 'Scheduled', 'Completed'];
 const EMPTY = { customer: '', contact: '', phone: '', email: '', equipment: '', issue: '', status: 'New request', priority: 'Normal', source: 'Phone', followUpDate: new Date().toLocaleDateString('en-CA'), notes: '' };
 const today = (() => { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`; })();

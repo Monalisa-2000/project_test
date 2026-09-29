@@ -6,8 +6,9 @@ const { randomUUID } = require('node:crypto');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const DATA_FILE = path.join(__dirname, 'data', 'jobs.json');
-const DIST_DIR = path.join(__dirname, '..', 'dist');
+const DATA_FILE = process.env.VERCEL
+  ? path.join('/tmp', 'coldtrack-jobs.json')
+  : path.join(__dirname, 'data', 'jobs.json');
 const STATUSES = ['New request', 'Needs quote', 'Awaiting approval', 'Ready to schedule', 'Scheduled', 'Completed'];
 const PRIORITIES = ['Normal', 'Urgent'];
 
@@ -92,14 +93,6 @@ app.delete('/api/jobs/:id', async (req, res, next) => {
     await saveJobs(remaining);
     res.status(204).end();
   } catch (error) { next(error); }
-});
-
-app.use(express.static(DIST_DIR));
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api/')) return next();
-  res.sendFile(path.join(DIST_DIR, 'index.html'), (error) => {
-    if (error) next(error);
-  });
 });
 
 app.use((error, _req, res, _next) => {
